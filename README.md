@@ -5,12 +5,12 @@ A News App which shows news of various Categories like Top Stories, Business, He
 ## -Clean and Optimized code
 
 ## Packages Used
-- [flutter_launcher_name: "^0.0.1"]
-- [webview_flutter: ^1.0.5]
-- [intl: ^0.16.1]
-- [http: ^0.12.2]
-- [provider: ^4.3.2+2]
-- [google_fonts: ^1.1.1]
+- flutter_launcher_name: "^0.0.1"
+- webview_flutter: ^1.0.5
+- intl: ^0.16.1
+- http: ^0.12.2
+- provider: ^4.3.2+2
+- google_fonts: ^1.1.1
 
 ## About the Project in Detail
 -  App name ['Trevious_News']
