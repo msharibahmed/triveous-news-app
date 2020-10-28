@@ -1,4 +1,4 @@
-# Triveous-news
+# Triveous News
 A News App which shows news of various Categories like Top Stories, Business, Health, Science, Technology, Entertainment, Bitcoin, Wall Street Journal, TechCrunch and users can see the detail of a particular article which will open a Web View inside the app redirected to that article source website. Also users can see news based on the Countries.
 
 ## -Used PROVIDER state management technique
