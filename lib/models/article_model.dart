@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import '../utils/imports.dart';
 
 class ArticleModel {
   String author;

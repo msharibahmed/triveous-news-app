@@ -1,15 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:provider/provider.dart';
-import './providers/news_provider.dart';
-
-import 'screens/details_screen.dart';
-import 'screens/home_screen.dart';
+import 'utils/imports.dart';
 
 void main() {
   runApp(MyApp());
   SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(statusBarColor: Colors.white));
+      SystemUiOverlayStyle(statusBarColor: Colors.grey[50]));
 }
 
 class MyApp extends StatelessWidget {
@@ -23,7 +17,8 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           routes: {
             DetailsScreen.routeName: (context) => DetailsScreen(),
-            HomeScreen.routeName: (context) => HomeScreen()
+            HomeScreen.routeName: (context) => HomeScreen(),
+            DeveloperScreen.routeName: (context) => DeveloperScreen(),
           },
           home: HomeScreen(),
         ));

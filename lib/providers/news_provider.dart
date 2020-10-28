@@ -1,10 +1,13 @@
-import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:flutter/material.dart';
-
-import '../models/article_model.dart';
+import '../utils/imports.dart';
 
 class NewsProvider with ChangeNotifier {
+  // int _index = 0;
+  // void setCountry(int index) {
+  //   _index = index;
+  //   notifyListeners();
+  // }
+
   List<ArticleModel> _tab0 = [];
   List<ArticleModel> get tab0 {
     return [..._tab0];
@@ -57,25 +60,29 @@ class NewsProvider with ChangeNotifier {
 
   Future<void> topStories(String country) async {
     final url =
-        "http://newsapi.org/v2/top-headlines?country=$country&apiKey=680a694a84b7426c9e8e613c87ee0548";
-    final response = await http.get(url);
-    final resBody = jsonDecode(response.body);
-    // print(resBody);
+        "http://newsapi.org/v2/top-headlines?country=$country&apiKey=${ApiKey.KEY}";
+    // "https://api.mocki.io/v1/a92321d1";
+
     try {
+      final response = await http.get(url);
+      final resBody = jsonDecode(response.body);
+      // print(resBody);
       if (resBody['status'] == "ok") {
         List<ArticleModel> loadedArticles = [];
         // print(resBody["author"]);
 
         resBody["articles"].forEach((article) {
-          if (article["author"] != null &&
+          if (
+              // article["author"] != null &&
               article["title"] != null &&
-              article["description"] != null &&
-              article["url"] != null &&
-              (article["urlToImage"].endsWith('.jpg') ||
-                  article["urlToImage"].endsWith('.jpeg') ||
-                  article["urlToImage"].endsWith('.png')) &&
-              article["urlToImage"] != null &&
-              article["content"] != null) {
+                  article["description"] != null &&
+                  article["url"] != null &&
+                  (article["urlToImage"].endsWith('.jpg') ||
+                      article["urlToImage"].endsWith('.jpeg') ||
+                      article["urlToImage"].endsWith('.png')) &&
+                  article["urlToImage"].startsWith('http') &&
+                  // article["urlToImage"] != null &&
+                  article["content"] != null) {
             // print(_tab0);
 
             loadedArticles.add(ArticleModel(
@@ -90,10 +97,7 @@ class NewsProvider with ChangeNotifier {
         });
         _tab0 = loadedArticles;
         // print(_tab0);
-      }
-      else{
-        
-      }
+      } else {}
     } catch (error) {
       print(error);
     }
@@ -103,24 +107,28 @@ class NewsProvider with ChangeNotifier {
 
   Future<void> business(String country) async {
     final url =
-        "http://newsapi.org/v2/top-headlines?country=$country&category=business&apiKey=680a694a84b7426c9e8e613c87ee0548";
-    final response = await http.get(url);
-    final resBody = jsonDecode(response.body);
-    // print(resBody);
+        "http://newsapi.org/v2/top-headlines?country=$country&category=business&apiKey=${ApiKey.KEY}";
+    // "https://api.mocki.io/v1/a92321d1";
+
     try {
+      final response = await http.get(url);
+      final resBody = jsonDecode(response.body);
+      // print(resBody);
       if (resBody['status'] == "ok") {
         List<ArticleModel> loadedArticles = [];
 
         resBody["articles"].forEach((article) {
-          if (article["author"] != null &&
+          if (
+              // article["author"] != null &&
               article["title"] != null &&
-              article["description"] != null &&
-              article["url"] != null &&
-              (article["urlToImage"].endsWith('.jpg') ||
-                  article["urlToImage"].endsWith('.jpeg') ||
-                  article["urlToImage"].endsWith('.png')) &&
-              article["urlToImage"] != null &&
-              article["content"] != null) {
+                  article["description"] != null &&
+                  article["url"] != null &&
+                  (article["urlToImage"].endsWith('.jpg') ||
+                      article["urlToImage"].endsWith('.jpeg') ||
+                      article["urlToImage"].endsWith('.png')) &&
+                  article["urlToImage"].startsWith('http') &&
+                  // article["urlToImage"] != null &&
+                  article["content"] != null) {
             loadedArticles.add(ArticleModel(
                 author: article['author'],
                 title: article['title'],
@@ -142,25 +150,28 @@ class NewsProvider with ChangeNotifier {
 
   Future<void> health(String country) async {
     final url =
-        "http://newsapi.org/v2/top-headlines?country=$country&category=health&apiKey=680a694a84b7426c9e8e613c87ee0548";
-    //  final url = "https://api.mocki.io/v1/a92321d1";
-    final response = await http.get(url);
-    final resBody = jsonDecode(response.body);
-    // print(resBody);
+        "http://newsapi.org/v2/top-headlines?country=$country&category=health&apiKey=${ApiKey.KEY}";
+    // "https://api.mocki.io/v1/a92321d1";
+
     try {
+      final response = await http.get(url);
+      final resBody = jsonDecode(response.body);
+      // print(resBody);
       if (resBody['status'] == "ok") {
         List<ArticleModel> loadedArticles = [];
 
         resBody["articles"].forEach((article) {
-          if (article["author"] != null &&
+          if (
+              // article["author"] != null &&
               article["title"] != null &&
-              article["description"] != null &&
-              article["url"] != null &&
-              (article["urlToImage"].endsWith('.jpg') ||
-                  article["urlToImage"].endsWith('.jpeg') ||
-                  article["urlToImage"].endsWith('.png')) &&
-              article["urlToImage"] != null &&
-              article["content"] != null) {
+                  article["description"] != null &&
+                  article["url"] != null &&
+                  (article["urlToImage"].endsWith('.jpg') ||
+                      article["urlToImage"].endsWith('.jpeg') ||
+                      article["urlToImage"].endsWith('.png')) &&
+                  article["urlToImage"].startsWith('http') &&
+                  // article["urlToImage"] != null &&
+                  article["content"] != null) {
             loadedArticles.add(ArticleModel(
                 author: article['author'],
                 title: article['title'],
@@ -183,24 +194,28 @@ class NewsProvider with ChangeNotifier {
 
   Future<void> technology(String country) async {
     final url =
-        "http://newsapi.org/v2/top-headlines?country=$country&category=technology&apiKey=680a694a84b7426c9e8e613c87ee0548";
-    final response = await http.get(url);
-    final resBody = jsonDecode(response.body);
-    // print(resBody);
+        "http://newsapi.org/v2/top-headlines?country=$country&category=technology&apiKey=${ApiKey.KEY}";
+    // "https://api.mocki.io/v1/a92321d1";
+
     try {
+      final response = await http.get(url);
+      final resBody = jsonDecode(response.body);
+      // print(resBody);
       if (resBody['status'] == "ok") {
         List<ArticleModel> loadedArticles = [];
 
         resBody["articles"].forEach((article) {
-          if (article["author"] != null &&
+          if (
+              // article["author"] != null &&
               article["title"] != null &&
-              article["description"] != null &&
-              article["url"] != null &&
-              (article["urlToImage"].endsWith('.jpg') ||
-                  article["urlToImage"].endsWith('.jpeg') ||
-                  article["urlToImage"].endsWith('.png')) &&
-              article["urlToImage"] != null &&
-              article["content"] != null) {
+                  article["description"] != null &&
+                  article["url"] != null &&
+                  (article["urlToImage"].endsWith('.jpg') ||
+                      article["urlToImage"].endsWith('.jpeg') ||
+                      article["urlToImage"].endsWith('.png')) &&
+                  article["urlToImage"].startsWith('http') &&
+                  // article["urlToImage"] != null &&
+                  article["content"] != null) {
             loadedArticles.add(ArticleModel(
                 author: article['author'],
                 title: article['title'],
@@ -223,24 +238,28 @@ class NewsProvider with ChangeNotifier {
 
   Future<void> science(String country) async {
     final url =
-        "http://newsapi.org/v2/top-headlines?country=$country&category=science&apiKey=680a694a84b7426c9e8e613c87ee0548";
-    final response = await http.get(url);
-    final resBody = jsonDecode(response.body);
-    // print(resBody);
+        "http://newsapi.org/v2/top-headlines?country=$country&category=science&apiKey=${ApiKey.KEY}";
+    // "https://api.mocki.io/v1/a92321d1";
+
     try {
+      final response = await http.get(url);
+      final resBody = jsonDecode(response.body);
+      // print(resBody);
       if (resBody['status'] == "ok") {
         List<ArticleModel> loadedArticles = [];
 
         resBody["articles"].forEach((article) {
-          if (article["author"] != null &&
+          if (
+              // article["author"] != null &&
               article["title"] != null &&
-              article["description"] != null &&
-              article["url"] != null &&
-              (article["urlToImage"].endsWith('.jpg') ||
-                  article["urlToImage"].endsWith('.jpeg') ||
-                  article["urlToImage"].endsWith('.png')) &&
-              article["urlToImage"] != null &&
-              article["content"] != null) {
+                  article["description"] != null &&
+                  article["url"] != null &&
+                  (article["urlToImage"].endsWith('.jpg') ||
+                      article["urlToImage"].endsWith('.jpeg') ||
+                      article["urlToImage"].endsWith('.png')) &&
+                  article["urlToImage"].startsWith('http') &&
+                  // article["urlToImage"] != null &&
+                  article["content"] != null) {
             loadedArticles.add(ArticleModel(
                 author: article['author'],
                 title: article['title'],
@@ -263,24 +282,27 @@ class NewsProvider with ChangeNotifier {
 
   Future<void> sports(String country) async {
     final url =
-        "http://newsapi.org/v2/top-headlines?country=$country&category=sports&apiKey=680a694a84b7426c9e8e613c87ee0548";
-    final response = await http.get(url);
-    final resBody = jsonDecode(response.body);
-    // print(resBody);
+        "http://newsapi.org/v2/top-headlines?country=$country&category=sports&apiKey=${ApiKey.KEY}";
+
     try {
+      final response = await http.get(url);
+      final resBody = jsonDecode(response.body);
+      // print(resBody);
       if (resBody['status'] == "ok") {
         List<ArticleModel> loadedArticles = [];
 
         resBody["articles"].forEach((article) {
-          if (article["author"] != null &&
+          if (
+              // article["author"] != null &&
               article["title"] != null &&
-              article["description"] != null &&
-              article["url"] != null &&
-              (article["urlToImage"].endsWith('.jpg') ||
-                  article["urlToImage"].endsWith('.jpeg') ||
-                  article["urlToImage"].endsWith('.png')) &&
-              article["urlToImage"] != null &&
-              article["content"] != null) {
+                  article["description"] != null &&
+                  article["url"] != null &&
+                  (article["urlToImage"].endsWith('.jpg') ||
+                      article["urlToImage"].endsWith('.jpeg') ||
+                      article["urlToImage"].endsWith('.png')) &&
+                  article["urlToImage"].startsWith('http') &&
+                  // article["urlToImage"] != null &&
+                  article["content"] != null) {
             loadedArticles.add(ArticleModel(
                 author: article['author'],
                 title: article['title'],
@@ -303,24 +325,27 @@ class NewsProvider with ChangeNotifier {
 
   Future<void> entertainment(String country) async {
     final url =
-        "http://newsapi.org/v2/top-headlines?country=$country&category=entertainment&apiKey=680a694a84b7426c9e8e613c87ee0548";
-    final response = await http.get(url);
-    final resBody = jsonDecode(response.body);
-    // print(resBody);
+        "http://newsapi.org/v2/top-headlines?country=$country&category=entertainment&apiKey=${ApiKey.KEY}";
+
     try {
+      final response = await http.get(url);
+      final resBody = jsonDecode(response.body);
+      // print(resBody);
       if (resBody['status'] == "ok") {
         List<ArticleModel> loadedArticles = [];
 
         resBody["articles"].forEach((article) {
-          if (article["author"] != null &&
+          if (
+              // article["author"] != null &&
               article["title"] != null &&
-              article["description"] != null &&
-              article["url"] != null &&
-              (article["urlToImage"].endsWith('.jpg') ||
-                  article["urlToImage"].endsWith('.jpeg') ||
-                  article["urlToImage"].endsWith('.png')) &&
-              article["urlToImage"] != null &&
-              article["content"] != null) {
+                  article["description"] != null &&
+                  article["url"] != null &&
+                  (article["urlToImage"].endsWith('.jpg') ||
+                      article["urlToImage"].endsWith('.jpeg') ||
+                      article["urlToImage"].endsWith('.png')) &&
+                  article["urlToImage"].startsWith('http') &&
+                  // article["urlToImage"] != null &&
+                  article["content"] != null) {
             loadedArticles.add(ArticleModel(
                 author: article['author'],
                 title: article['title'],
@@ -343,25 +368,30 @@ class NewsProvider with ChangeNotifier {
 
   Future<void> bitCoin(String country) async {
     final url =
-        "http://newsapi.org/v2/everything?q=bitcoin&from=2020-09-26&sortBy=publishedAt&apiKey=680a694a84b7426c9e8e613c87ee0548";
+        "http://newsapi.org/v2/everything?q=bitcoin&from=2020-09-28&sortBy=publishedAt&apiKey=${ApiKey.KEY}";
 
-    final response = await http.get(url);
-    final resBody = jsonDecode(response.body);
-    // print(resBody);
     try {
+      final response = await http.get(url);
+      final resBody = jsonDecode(response.body);
+      // print(resBody);
       if (resBody['status'] == "ok") {
         List<ArticleModel> loadedArticles = [];
+        // print( resBody);
 
         resBody["articles"].forEach((article) {
-          if (article["author"] != null &&
-              article["title"] != null &&
-              article["description"] != null &&
-              article["url"] != null &&
-              (article["urlToImage"].endsWith('.jpg') ||
-                  article["urlToImage"].endsWith('.jpeg') ||
-                  article["urlToImage"].endsWith('.png')) &&
-              article["urlToImage"] != null &&
-              article["content"] != null) {
+          if (
+              // (article["urlToImage"].endsWith('.jpg') ||
+              // article["urlToImage"].endsWith('.jpeg') ||
+              // article["urlToImage"].endsWith('.png')) &&
+              // article["urlToImage"].startsWith('https') &&
+              article["author"] != null &&
+                  article["title"] != null &&
+                  article["description"] != null &&
+                  article["url"] != null &&
+                  // article["urlToImage"] != null &&
+                  article["content"] != null) {
+            // print(resBody);
+
             loadedArticles.add(ArticleModel(
                 author: article['author'],
                 title: article['title'],
@@ -382,26 +412,29 @@ class NewsProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> apple(String country) async {
+  Future<void> wallStreetJournal(String country) async {
     final url =
-        "http://newsapi.org/v2/everything?q=apple&from=2020-10-25&to=2020-10-25&sortBy=popularity&apiKey=680a694a84b7426c9e8e613c87ee0548";
-    final response = await http.get(url);
-    final resBody = jsonDecode(response.body);
-    // print(resBody);
+        "http://newsapi.org/v2/everything?domains=wsj.com&apiKey=${ApiKey.KEY}";
+
     try {
+      final response = await http.get(url);
+      final resBody = jsonDecode(response.body);
+      // print(resBody);
       if (resBody['status'] == "ok") {
         List<ArticleModel> loadedArticles = [];
 
         resBody["articles"].forEach((article) {
-          if (article["author"] != null &&
+          if (
+              // article["author"] != null &&
               article["title"] != null &&
-              article["description"] != null &&
-              article["url"] != null &&
-              (article["urlToImage"].endsWith('.jpg') ||
-                  article["urlToImage"].endsWith('.jpeg') ||
-                  article["urlToImage"].endsWith('.png')) &&
-              article["urlToImage"] != null &&
-              article["content"] != null) {
+                  article["description"] != null &&
+                  article["url"] != null &&
+                  (article["urlToImage"].endsWith('.jpg') ||
+                      article["urlToImage"].endsWith('.jpeg') ||
+                      article["urlToImage"].endsWith('.png')) &&
+                  article["urlToImage"].startsWith('http') &&
+                  // article["urlToImage"] != null &&
+                  article["content"] != null) {
             loadedArticles.add(ArticleModel(
                 author: article['author'],
                 title: article['title'],
@@ -425,24 +458,27 @@ class NewsProvider with ChangeNotifier {
 
   Future<void> techCrunch(String country) async {
     final url =
-        "http://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=680a694a84b7426c9e8e613c87ee0548";
-    final response = await http.get(url);
-    final resBody = jsonDecode(response.body);
-    // print(resBody);
+        "http://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=${ApiKey.KEY}";
+
     try {
+      final response = await http.get(url);
+      final resBody = jsonDecode(response.body);
+      // print(resBody);
       if (resBody['status'] == "ok") {
         List<ArticleModel> loadedArticles = [];
 
         resBody["articles"].forEach((article) {
-          if (article["author"] != null &&
+          if (
+              // article["author"] != null &&
               article["title"] != null &&
-              article["description"] != null &&
-              article["url"] != null &&
-              (article["urlToImage"].endsWith('.jpg') ||
-                  article["urlToImage"].endsWith('.jpeg') ||
-                  article["urlToImage"].endsWith('.png')) &&
-              article["urlToImage"] != null &&
-              article["content"] != null) {
+                  article["description"] != null &&
+                  article["url"] != null &&
+                  // (article["urlToImage"].endsWith('.jpg') ||
+                  // article["urlToImage"].endsWith('.jpeg') ||
+                  // article["urlToImage"].endsWith('.png')) &&
+                  article["urlToImage"].startsWith('http') &&
+                  // article["urlToImage"] != null &&
+                  article["content"] != null) {
             loadedArticles.add(ArticleModel(
                 author: article['author'],
                 title: article['title'],
@@ -456,45 +492,6 @@ class NewsProvider with ChangeNotifier {
         _tab9 = loadedArticles;
         // print(_tab0);
 
-      }
-    } catch (error) {
-      print(error);
-    }
-
-    notifyListeners();
-  }
-
-  Future<void> getNews(
-      String country, String url, List<ArticleModel> lst) async {
-    final response = await http.get(url);
-    final resBody = jsonDecode(response.body);
-    // print(resBody);
-    try {
-      if (resBody['status'] == "ok") {
-        List<ArticleModel> loadedArticles = [];
-
-        resBody["articles"].forEach((article) {
-          if (article["author"] != null &&
-              article["title"] != null &&
-              article["description"] != null &&
-              article["url"] != null &&
-              (article["urlToImage"].endsWith('.jpg') ||
-                  article["urlToImage"].endsWith('.jpeg') ||
-                  article["urlToImage"].endsWith('.png')) &&
-              article["urlToImage"] != null &&
-              article["content"] != null) {
-            loadedArticles.add(ArticleModel(
-                author: article['author'],
-                title: article['title'],
-                description: article['description'],
-                url: article['url'],
-                urlToImage: article['urlToImage'],
-                publishedAt: DateTime.parse(article['publishedAt']),
-                content: article['content']));
-          }
-        });
-        lst = loadedArticles;
-        print(_tab0);
       }
     } catch (error) {
       print(error);
