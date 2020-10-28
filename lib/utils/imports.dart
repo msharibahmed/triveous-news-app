@@ -6,8 +6,6 @@ export 'package:flutter/material.dart';
 export 'package:google_fonts/google_fonts.dart';
 export 'package:webview_flutter/webview_flutter.dart';
 export 'package:provider/provider.dart';
-export  'package:flare_flutter/flare_actor.dart';
-export 'package:url_launcher/url_launcher.dart';
 
 //models..
 export '../models/article_model.dart';
@@ -18,7 +16,6 @@ export '../providers/news_provider.dart';
 
 //screens..
 export '../screens/details_screen.dart';
-export '../screens/developer_screen.dart';
 export '../screens/home_screen.dart';
 
 //utils..

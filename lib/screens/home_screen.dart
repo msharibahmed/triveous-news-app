@@ -84,16 +84,6 @@ class _HomeScreenState extends State<HomeScreen> {
             elevation: 1,
             backgroundColor: Colors.white,
             centerTitle: true,
-            leading: IconButton(
-              onPressed: () {
-                Navigator.pushNamed(context, DeveloperScreen.routeName);
-              },
-              icon: Icon(
-                Icons.face,
-                size: 32,
-              ),
-              color: Colors.black,
-            ),
             title: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -136,7 +126,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                     Navigator.pop(context);
                                   },
                                   child: Row(
-                                    // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
                                       Text((e + 1).toString() + '. '),
                                       Text(
