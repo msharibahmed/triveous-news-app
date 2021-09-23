@@ -13,7 +13,7 @@ A News App which shows news of various Categories like Top Stories, Business, He
 - google_fonts: ^1.1.1
 ## NOTE:
  IF THE APP SHOWS "NO ARTICLES TO SHOW" THEN IT'S PROBABLY MEAN THAT THE LIMITED REQUESTS QUOTA OF THAT DAY HAS BEEN USED AS THE API newsapi.org PROVIDES 100 REQUESTS PER DAY ONLY. ALSO ONE OF THE CATEGORY BITCOIN GIVES NEWS OF THAT PARTICULAR DAY SO THIS CATEGORY WILL SHOW "NO ARTICLES TO SHOW" BECAUSE IT IS SET TO FETCH NEWS ONLY FOR 28th OCTOBER.
--  App name ['Trevious_News']
+-  App name ['Triveous_News']
 -  Used custom icon for the app
 -  changed Splash Screen to custom Splash Screen(Actual Launcher Screen)
 -  Used newsapi.org API for the the data
